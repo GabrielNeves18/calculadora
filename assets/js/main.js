@@ -26,8 +26,8 @@ function Calculadora(){
 
     this.realizaConta = () =>{
         try {
-            const conta = new Function('return ' + this.display.value)();
-            if (isNaN(conta)) {
+            const conta = math.evaluate(this.display.value);
+            if (!conta && conta !== 0) {
                 alert('Conta Inválida');
                 return;
             }

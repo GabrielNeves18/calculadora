@@ -25,14 +25,14 @@ function Calculadora(){
     }
 
     this.realizaConta = () =>{
-        try{
-            const conta = eval(this.display.value)
-            if (!conta){
+        try {
+            const conta = new Function('return ' + this.display.value)();
+            if (isNaN(conta)) {
                 alert('Conta Inválida');
                 return;
-            } 
+            }
             this.display.value = conta;
-        }catch(e){
+        } catch (e) {
             alert('Conta Inválida');
             return;
         }
